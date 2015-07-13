@@ -5,6 +5,11 @@ get "/all_assignments" do
   erb :"assignments/all_assignments"
 end
 
+get "/all_assignments/:id" do
+  @selected_assignment = Assignment.find(params["id"])
+  erb :"assignments/assignment_information"
+end
+
 # ------------------------------------------------------------------------------
 # Add new assignment
 # ------------------------------------------------------------------------------

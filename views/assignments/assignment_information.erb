@@ -1,0 +1,23 @@
+<div>
+  <nav>
+    <p>
+      <a href="/all_assignments">View All Assignments</a>
+    </p>
+  </nav>
+</div>
+
+<div>
+  <h2><%= @selected_assignment.name %></h2>
+  <ul>
+    <li>
+      Description: <%= assignment.description %>
+    </li>
+    <li>
+      Link to Assignment: <%= assignment.where_stored %>
+    </li>
+  </ul>
+  <% end %>
+
+  <a href="/add_collaborator">Add a collaborator for this assignment</a>
+  <a href="/add_link">Add a link to media associated with this assignment</a>
+</div>

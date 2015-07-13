@@ -16,8 +16,8 @@
   <h2>Assignments:</h2>
   <% Assignment.all.each do |assignment| %>
   <ul>
-    <li>
-      <%= assignment.name %> - <%= assignment.description %>: <%= assignment.where_stored %>
+    <li><a href="/all_assignments/<%= assignment.id %>">
+      <%= assignment.name %></a> - <%= assignment.description %>: <%= assignment.where_stored %>
     </li>
   </ul>
   <% end %>
