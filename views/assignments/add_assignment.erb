@@ -1,0 +1,30 @@
+<div>
+  <nav>
+    <p>
+      <a href="/all_assignment">View All Assignments</a>
+    </p>
+    <p>
+      <a href="/edit_assignment">Edit Assignment Information</a>
+    </p>
+    <p>
+      <a href="/delete_assignment">Delete an Assignment</a>
+    </p>
+  </nav>
+</div>
+
+<div>
+  <% if @error %>
+    <h2>Cannot add assignment - Missing information</h2>
+  <% end %>
+</div>
+
+<div>
+  <h2>Add a new assignment</h2>
+  <form action="/save_new_assignment">
+    <h3>Name</h3>
+    <input type="text" name="assignements[name]" placeholder="Assignment Name">
+    <input type="text" name="assignements[description]" placeholder="Assignment Description">
+    <input type="text" name="assignements[where_stored]" placeholder="Link to Assignment">
+    <input type="submit">
+  </form>
+</div>
