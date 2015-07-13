@@ -20,3 +20,25 @@ get "/api/assignments/:id" do
 
   json @assignment
 end
+
+get "/api/links" do
+  @links = Link.all_hash
+  json @links
+end
+
+get "/api/collaborators" do
+  @collaborators = User.all_hash
+  json @collaborators
+end
+
+get "/api/collaborators/:id"
+  selected_user = User.find(params["id"])
+  @users = selected_user.to_hash
+
+  @users["assignments"] = []
+  selected_user.get_assignment_names.each do |assignment|
+    @users["assignments"] << assignment.to_hash
+  end
+
+  json @users
+end

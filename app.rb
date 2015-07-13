@@ -2,6 +2,8 @@ require "pry"
 require "sinatra"
 require "sinatra/reloader"
 require "sinatra/json"
+require "httparty"
+set :bind, '192.168.1.8'
 
 # SQL/Database
 require "sqlite3"
