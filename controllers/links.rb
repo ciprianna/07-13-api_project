@@ -6,7 +6,7 @@ get "/all_links" do
 end
 
 # ------------------------------------------------------------------------------
-# Add new assignment
+# Add new link
 # ------------------------------------------------------------------------------
 # Step 1 - Display empty form to the user
 get "/add_assignment" do

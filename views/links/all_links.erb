@@ -1,0 +1,29 @@
+<div>
+  <nav>
+    <p>
+      <a href="/home">Return Home</a>
+    </p>
+  </nav>
+</div>
+
+<div>
+  <h2>Assignment Media:</h2>
+  <% Link.all.each do |link| %>
+  <table>
+    <th>
+      Media Name
+    </th>
+    <th>
+      Associated Assignment
+    </th>
+    <th>
+      Media Description
+    </th>
+    <tr>
+      <td><a href="<%= link.where_stored %>"><%= link.name %></a></td>
+      <td><%= link.get_assignment_name %></td>
+      <td><%= link.description %></td>
+    </tr>
+  </table>
+  <% end %>
+</div>

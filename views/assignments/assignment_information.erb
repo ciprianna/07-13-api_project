@@ -10,14 +10,13 @@
   <h2><%= @selected_assignment.name %></h2>
   <ul>
     <li>
-      Description: <%= assignment.description %>
+      Description: <%= @selected_assignment.description %>
     </li>
     <li>
-      Link to Assignment: <%= assignment.where_stored %>
+      Link to Assignment: <%= @selected_assignment.where_stored %>
     </li>
   </ul>
-  <% end %>
 
-  <a href="/add_collaborator">Add a collaborator for this assignment</a>
+  <a href="/add_collaborator">Add a collaborator for this assignment</a><br>
   <a href="/add_link">Add a link to media associated with this assignment</a>
 </div>

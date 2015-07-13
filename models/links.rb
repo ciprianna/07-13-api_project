@@ -37,6 +37,15 @@ class Link
     end
   end
 
+  # Method to return the assignment name for the assignment it's for
+  #
+  # Returns name value, String, from the names table
+  def get_assignment_name
+    result = DATABASE.execute("SELECT name FROM assignments WHERE id = #{@assignment_id}").first
+
+    return result
+  end
+
   # Ensures that an updated Link Object has valid fields before saving
   #
   # Returns the Object if saved or false if save failed
