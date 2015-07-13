@@ -50,6 +50,14 @@ class Assignment
     return store_results
   end
 
+  # Get all user names associated with an Object
+  #
+  # Returns an Array of Hashes
+  def get_user_names
+    results = DATABASE.execute("SELECT users.name FROM users JOIN collaborators ON users.id = collaborators.user_id WHERE collaborators.assignment_id = #{self.id};")
+  end
+
+
   # Ensures that an updated Assignment Object has valid fields before saving
   #
   # Returns the Object if saved or false if save failed

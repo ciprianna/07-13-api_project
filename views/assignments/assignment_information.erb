@@ -28,6 +28,15 @@
   </ul>
   <% end %>
 
+  <h3>Collaborators:</h3>
+  <% @selected_assignment.get_user_names do |users| %>
+  <ul>
+    <li>
+      <%= users["name"] %>
+    </li>
+  </ul>
+  <% end %>
+
   <a href="/add_collaborator">Add a collaborator for this assignment</a><br>
   <a href="/add_link">Add a link to media associated with this assignment</a>
 </div>

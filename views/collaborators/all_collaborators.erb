@@ -1,0 +1,18 @@
+<div>
+  <nav>
+    <p>
+      <a href="/home">Return Home</a>
+    </p>
+  </nav>
+</div>
+
+<div>
+  <h2>Collaborators:</h2>
+  <% User.all.each do |user| %>
+    <ul>
+      <li>
+        <%= user.name %>
+      </li>
+    </ul>
+  <% end %>
+</div>
