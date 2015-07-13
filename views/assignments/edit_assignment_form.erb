@@ -1,0 +1,22 @@
+<div>
+  <% if @error %>
+    <h3>Cannot save changed assignment information - Missing information</h3>
+  <% end %>
+</div>
+
+<div>
+  <form action="/save_updated_assignment">
+    <h2>Assignment Name</h2>
+    <input type="text" name="assignments[name]" value="<%= @assignment_to_edit.name %>">
+    <h2>Description</h2>
+    <input type="text" name="assignments[description]" value="<%= @assignment_to_edit.description %>">
+    <h2>Link to Assignment Location</h2>
+    <input type="text" name="assignments[where_stored]" value="<%= @assignment_to_edit.where_stored %>">
+    <% if params['id'].nil? %>
+      <input type="hidden" name="assignments[id]" value="<%= params['assignments']['id'] %>">
+    <% else %>
+      <input type="hidden" name="assignments[id]" value="<%= params['id'] %>">
+    <% end %>
+    <input type="submit">
+  </form>
+</div>
