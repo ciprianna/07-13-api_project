@@ -22,6 +22,18 @@ module DatabaseClassMethods
 
   end
 
+  # Selects all information from a database table as a Hash
+  #
+  # Returns an Array of Hashes
+  def all_hash
+    table = self.to_s.pluralize.underscore
+
+    results = DATABASE.execute("SELECT * FROM #{table};")
+
+    return results
+
+  end
+
   # Locates an existing row in a table
   #
   # record_id - Integer indicating the primary key for the row
