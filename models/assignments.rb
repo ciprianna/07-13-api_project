@@ -35,6 +35,21 @@ class Assignment
     end
   end
 
+  # Get all links associated with an Object
+  #
+  # Returns an Array of Link Objects
+  def get_links
+    results = DATABASE.execute("SELECT * FROM links WHERE assignment_id = #{@id}")
+
+    store_results = []
+
+    results.each do |hash|
+      store_results << Link.new(hash)
+    end
+
+    return store_results
+  end
+
   # Ensures that an updated Assignment Object has valid fields before saving
   #
   # Returns the Object if saved or false if save failed

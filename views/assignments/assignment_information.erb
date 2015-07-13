@@ -17,6 +17,17 @@
     </li>
   </ul>
 
+  <h3>Associated Media</h3>
+  <% @selected_assignment.get_links.each do |link| %>
+  <ul>
+    <li>
+      <a href="<%= link.where_stored %>">
+      <%= link.name %>
+    </a>
+    </li>
+  </ul>
+  <% end %>
+
   <a href="/add_collaborator">Add a collaborator for this assignment</a><br>
   <a href="/add_link">Add a link to media associated with this assignment</a>
 </div>
