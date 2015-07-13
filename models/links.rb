@@ -43,7 +43,7 @@ class Link
   def get_assignment_name
     result = DATABASE.execute("SELECT name FROM assignments WHERE id = #{@assignment_id}").first
 
-    return result
+    return result["name"]
   end
 
   # Ensures that an updated Link Object has valid fields before saving

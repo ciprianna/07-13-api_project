@@ -9,19 +9,19 @@ end
 # Add new link
 # ------------------------------------------------------------------------------
 # Step 1 - Display empty form to the user
-get "/add_assignment" do
-  erb :"assignments/add_assignment"
+get "/add_link" do
+  erb :"links/add_link"
 end
 
 # Step 2 - Save form information
-get "/save_new_assignment" do
-  @new_assignment = Assignment.new({"name" => params['assignments']['name'], "assignment_id" => params['assignments']['assignment_id'], "description" => params["assignments"]["description"], "where_stored" => params["assignments"]["where_stored"]})
+get "/save_new_link" do
+  @new_link = Link.new({"name" => params['links']['name'], "assignment_id" => params['links']['assignment_id'], "description" => params["links"]["description"], "where_stored" => params["links"]["where_stored"]})
 
-  if @new_assignment.add_to_database
-    erb :"assignments/success"
+  if @new_link.add_to_database
+    erb :"links/success"
   else
     @error = true
-    erb :"assignments/add_assignment"
+    erb :"links/add_link"
   end
 end
 

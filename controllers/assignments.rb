@@ -20,7 +20,7 @@ end
 
 # Step 2 - Save form information
 get "/save_new_assignment" do
-  @new_assignment = Assignment.new({"name" => params['assignments']['name'], "assignment_id" => params['assignments']['assignment_id'], "description" => params["assignments"]["description"], "where_stored" => params["assignments"]["where_stored"]})
+  @new_assignment = Assignment.new({"name" => params['assignments']['name'], "description" => params["assignments"]["description"], "where_stored" => params["assignments"]["where_stored"]})
 
   if @new_assignment.add_to_database
     erb :"assignments/success"
