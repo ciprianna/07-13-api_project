@@ -1,0 +1,35 @@
+<div>
+  <nav>
+    <p>
+      <a href="/all_collaborators">View All Collaborators</a>
+    </p>
+    <p>
+      <a href="/home">Return Home</a>
+    </p>
+  </nav>
+</div>
+
+<div>
+  <% if @error %>
+    <h2>Cannot add collaborator - Missing information</h2>
+  <% end %>
+</div>
+
+<div>
+  <h2>Add a new collaborator</h2>
+  <!-- <form action="/save_new_collaborator">
+    <h3>Name</h3>
+    <input type="text" name="collaborators[name]" placeholder="Media Name">
+    <h3>Associated Assignment</h3>
+    <select name="links[assignment_id]">
+      <% Assignment.all.each do |assignment| %>
+        <option value="<%= assignment.id %>"><%= assignment.name %></option>
+      <% end %>
+    </select>
+    <h3>Description</h3>
+    <input type="text" name="links[description]" placeholder="Media Description">
+    <h3>Link to Media</h3>
+    <input type="text" name="links[where_stored]" placeholder="Link to Media"><br>
+    <input type="submit">
+  </form> -->
+</div>
