@@ -1,0 +1,25 @@
+<div>
+  <nav>
+    <p>
+      <a href="/all_assignments">View All Assignments</a>
+    </p>
+    <p>
+      <a href="/add_assignment">Add New Assignment</a>
+    </p>
+    <p>
+      <a href="/edit_assignment">Edit Assignment Information</a>
+    </p>
+  </nav>
+</div>
+
+<div>
+  <h2>Select an assignment to delete</h2>
+  <% Assignment.all.each do |assignment| %>
+  <ul>
+    <li>
+      <a href="/delete/<%= assignment.id %>">
+        <%= assignment.name %></a> - <%= assignment.description %>: <%= assignment.where_stored %>
+    </li>
+  </ul>
+  <% end %>
+</div>

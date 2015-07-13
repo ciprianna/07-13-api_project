@@ -1,0 +1,10 @@
+<p>
+  Are you sure you wish to delete <%= @assignment_to_delete.name %>?
+</p>
+
+<form action="/really_delete">
+  <input type="radio" name="assignments[confirm_delete]" value="Yes">Yes<br>
+  <input type="radio" name="assignments[confirm_delete]" value="No">No
+  <input type="hidden" name="assignments[id]" value="params['id']"><br>
+  <input type="submit">
+</form>

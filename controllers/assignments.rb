@@ -56,3 +56,28 @@ get "/save_updated_assignment" do
     erb :"assignments/edit_assignment_form"
   end
 end
+
+# ------------------------------------------------------------------------------
+# Delete an assignment
+# ------------------------------------------------------------------------------
+# Step 1 - Select an assignment to delete
+get "/delete_assignment" do
+  erb :"assignments/delete_assignment"
+end
+
+# Step 2 - Confirm assignment deletion
+get "/delete/:id" do
+  @assignment_to_delete = Assignment.find(params["id"])
+  erb :"assignments/confirm_delete"
+end
+
+# Step 3 - Delete
+get "/really_delete" do
+  if params["assignments"]["confirm_delete"] == "yes"
+    assignment_to_delete = Assignment.find(params["assignments"]["id"])
+    assignment_to_delete.delete
+    erb :"assignments/delete_success"
+  else
+    erb :"index"
+  end
+end
