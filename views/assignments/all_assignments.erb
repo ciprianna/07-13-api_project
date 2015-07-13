@@ -4,10 +4,21 @@
       <a href="/add_assignment">Add New Assignment</a>
     </p>
     <p>
-      <a href="/edit_product">Edit Assignment Information</a>
+      <a href="/edit_assignment">Edit Assignment Information</a>
     </p>
     <p>
-      <a href="/delete_product">Delete an Assignment</a>
+      <a href="/delete_assignment">Delete an Assignment</a>
     </p>
   </nav>
+</div>
+
+<div>
+  <h2>Assignments:</h2>
+  <% Assignment.all.each do |assignment| %>
+  <ul>
+    <li>
+      <%= assignment.name %> - <%= assignment.description %>: <%= assignment.where_stored %>
+    </li>
+  </ul>
+  <% end %>
 </div>
