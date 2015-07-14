@@ -1,0 +1,25 @@
+<div>
+  <nav>
+    <p>
+      <a href="/all_users">View All Users</a>
+    </p>
+    <p>
+      <a href="/home">Return Home</a>
+    </p>
+  </nav>
+</div>
+
+<div>
+  <% if @error %>
+    <h2>Cannot add user - Missing or duplicate name</h2>
+  <% end %>
+</div>
+
+<div>
+  <h2>Add a new user</h2>
+  <form action="/save_new_user">
+    <h3>Name</h3>
+    <input type="text" name="user[name]" placeholder="Enter name">
+    <input type="submit">
+  </form>
+</div>

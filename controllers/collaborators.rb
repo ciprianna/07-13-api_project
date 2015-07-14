@@ -15,7 +15,7 @@ end
 
 # Step 2 - Save form information
 get "/save_new_collaborator" do
-  @new_collaborator = collaborator.new({"user_id" => params['collaborators']['user_id'], "assignment_id" => params['collaborators']['assignment_id']})
+  @new_collaborator = Collaborator.new({"user_id" => params['collaborators']['user_id'], "assignment_id" => params['collaborators']['assignment_id']})
 
   if @new_collaborator.add_to_database
     erb :"collaborators/success"
