@@ -180,3 +180,14 @@ get "/api/delete_link/:assignment_id/:link_id" do
 
   json @assignment
 end
+
+# ------------------------------------------------------------------------------
+# Delete an assignment from the api
+# ------------------------------------------------------------------------------
+get "/api/delete_assignment/:assignment_id" do
+  assignment_to_delete = Assignment.find(params["assignment_id"].to_i)
+  assignment_to_delete.delete
+
+  @assignments = Assignment.all_hash
+  json @assignments
+end
