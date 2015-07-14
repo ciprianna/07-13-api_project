@@ -22,13 +22,13 @@
   <h2>Add a new assignment</h2>
   <form action="/save_new_assignment">
     <h3>Name</h3>
-    <input type="text" name="assignments[name]" placeholder="Assignment Name">
+    <input type="text" name="assignments[name]" id="assignments_name" placeholder="Assignment Name">
     <h3>Description</h3>
     <input type="text" name="assignments[description]" placeholder="Assignment Description">
     <h3>Link to Assignment</h3>
     <input type="text" name="assignments[where_stored]" placeholder="Link to Assignment"><br>
     <% if  @add_from_api %>
-      <input type="submit" id="use_api">
+      <input type="submit" id="use_api" value="~submit~">
     <% else %>
       <input type="submit">
     <% end %>
@@ -36,5 +36,5 @@
 </div>
 
 <div id="success">
-  
+
 </div>
