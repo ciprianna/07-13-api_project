@@ -20,7 +20,11 @@
 
 <div id="add_new_assignment_form">
   <h2>Add a new assignment</h2>
+<% if  @add_from_api %>
+  <form action="/api/create_assignment" id="form_action">
+<% else %>
   <form action="/save_new_assignment">
+<% end %>
     <h3>Name</h3>
     <input type="text" name="assignments[name]" id="assignments_name" placeholder="Assignment Name">
     <h3>Description</h3>

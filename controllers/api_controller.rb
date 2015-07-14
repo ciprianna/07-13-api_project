@@ -51,3 +51,17 @@ get "/api/create_assignment" do
   @add_from_api = true
   erb :"assignments/add_assignment"
 end
+
+# Step 2 - Add it and then return the result as a json
+get "/api/create_assignment/:name/:description/:where_stored" do
+  new_assignment = Assignment.new({"name" => params['name'], "description" => params['description'], "where_stored" => params['where_stored']})
+
+  assignment_added = new_assignment.add_to_database
+
+  if assignment_added != false
+    @new_assignment_hash = assignment_added.to_hash
+    json @new_assignment_hash
+  else
+    erb "Addition failed."
+  end
+end
