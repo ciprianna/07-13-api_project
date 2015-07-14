@@ -61,10 +61,10 @@ end
 # ------------------------------------------------------------------------------
 # Create new assignment
 # ------------------------------------------------------------------------------
-get "/api/create_assignment" do
-  @add_from_api = true
-  erb :"assignments/add_assignment"
-end
+# get "/api/create_assignment" do
+#   @add_from_api = true
+#   erb :"assignments/add_assignment"
+# end
 
 get "/api/create_assignment/:name/:description/:where_stored" do
   new_assignment = Assignment.new({"name" => params['name'], "description" => params['description'], "where_stored" => params['where_stored']})
@@ -78,3 +78,41 @@ get "/api/create_assignment/:name/:description/:where_stored" do
     erb "Addition failed."
   end
 end
+
+# ------------------------------------------------------------------------------
+# Add a link to an assignment
+# ------------------------------------------------------------------------------
+get "/api/add_link_to_assignment/:name/:assignment_id/:description/:where_stored" do
+  # Create the new Link Object
+  new_link = Link.new({"name" => params['name'], "assignment_id" => params['assignment_id'], "description" => params['description'], "where_stored" => params['where_stored']})
+
+  # Try to add to database (if valid)
+  link_added = new_link.add_to_database
+
+  # Find the associated assignment and store all of its info
+  selected_assignment = Assignment.find(params["assignment_id"])
+  @assignment = selected_assignment.to_hash
+
+  # Store all collaborators for that assignment
+  @assignment["collaborators"] = []
+  selected_assignment.get_user_names.each do |collaborator|
+    @assignment["collaborators"] << collaborator.to_hash
+  end
+
+  # Store all links (including the new one) in the hash
+  @assignment["links"] = []
+  selected_assignment.get_links.each do |link|
+    @assignment["links"] << link.to_hash
+  end
+
+  # If new link was actually added to the database, return JSON
+  if link_added != false
+    json @assignment
+  else
+    erb "Addition failed."
+  end
+end
+
+# ------------------------------------------------------------------------------
+#
+# ------------------------------------------------------------------------------
