@@ -33,6 +33,18 @@ class Collaborator
     end
   end
 
+  # Find collaboration
+  #
+  # assignment_id - Integer, foreign key from the assignments table
+  # user_id - Integer, foreign key from the users table
+  #
+  # Returns Collaboration Object
+  def self.get_collaboration(assignment_id, user_id)
+    result = DATABASE.execute("SELECT * FROM collaborators WHERE assignment_id = '#{assignment_id}' AND user_id = '#{user_id}';").first
+
+    collab_object = Collaborator.new(result)
+  end
+
   # Ensures that an updated Object has valid fields before saving
   #
   # Returns the Object if saved or false if save failed

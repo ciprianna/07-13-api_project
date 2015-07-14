@@ -1,0 +1,25 @@
+<div>
+  <nav>
+    <p>
+      <a href="/all_assignments">View All Assignments</a>
+    </p>
+    <p>
+      <a href="/home">Home</a>
+    </p>
+  </nav>
+</div>
+
+<div>
+  <h2>Select an assignment to delete a collaborator from</h2>
+
+    <form action="/delete_collaboration_from_assignment">
+      <select name="collaborators[user_id]">
+          <% @assignment.get_user_names.each do |users| %>
+        <option value="<%= users['id'] %>"><%= users['name'] %></option>
+          <% end %>
+      </select>
+      <input type="hidden" name="collaborators[assignment_id]" value="<%= @assignment.id %>">
+      <input type="submit">
+    </form>
+
+</div>

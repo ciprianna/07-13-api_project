@@ -54,7 +54,7 @@ class Assignment
   #
   # Returns an Array of Hashes
   def get_user_names
-    results = DATABASE.execute("SELECT users.name FROM users JOIN collaborators ON users.id = collaborators.user_id WHERE collaborators.assignment_id = #{self.id};")
+    results = DATABASE.execute("SELECT users.id, users.name FROM users JOIN collaborators ON users.id = collaborators.user_id WHERE collaborators.assignment_id = #{self.id};")
   end
 
 
