@@ -1,8 +1,14 @@
+# ------------------------------------------------------------------------------
+# Display all assignments in json
+# ------------------------------------------------------------------------------
 get "/api/assignments" do
   @assignments = Assignment.all_hash
   json @assignments
 end
 
+# ------------------------------------------------------------------------------
+# Display one assignment's information in json
+# ------------------------------------------------------------------------------
 get "/api/assignments/:id" do
   selected_assignment = Assignment.find(params["id"])
   @assignment = selected_assignment.to_hash
@@ -21,16 +27,25 @@ get "/api/assignments/:id" do
   json @assignment
 end
 
+# ------------------------------------------------------------------------------
+# Display all links in json
+# ------------------------------------------------------------------------------
 get "/api/links" do
   @links = Link.all_hash
   json @links
 end
 
+# ------------------------------------------------------------------------------
+# Display all collaborators in json
+# ------------------------------------------------------------------------------
 get "/api/collaborators" do
   @collaborators = User.all_hash
   json @collaborators
 end
 
+# ------------------------------------------------------------------------------
+# Display one collaborater and their assignments worked on in json
+# ------------------------------------------------------------------------------
 get "/api/collaborators/:id" do
   selected_user = User.find(params["id"])
   @users = selected_user.to_hash
@@ -46,13 +61,11 @@ end
 # ------------------------------------------------------------------------------
 # Create new assignment
 # ------------------------------------------------------------------------------
-# Step 1 - Form to display to the user
 get "/api/create_assignment" do
   @add_from_api = true
   erb :"assignments/add_assignment"
 end
 
-# Step 2 - Add it and then return the result as a json
 get "/api/create_assignment/:name/:description/:where_stored" do
   new_assignment = Assignment.new({"name" => params['name'], "description" => params['description'], "where_stored" => params['where_stored']})
 
