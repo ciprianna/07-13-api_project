@@ -10,11 +10,11 @@
 </div>
 
 <div>
-  <h2>Select an assignment to delete a collaborator from:</h2>
+  <h2>Select an assignment to delete a link from:</h2>
   <% Assignment.all.each do |assignment| %>
   <ul>
     <li>
-      <a href="/delete_collaborator/<%= assignment.id %>">
+      <a href="/delete_link/<%= assignment.id %>">
         <%= assignment.name %></a> - <%= assignment.description %>: <%= assignment.where_stored %>
     </li>
   </ul>

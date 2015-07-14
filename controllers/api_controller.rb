@@ -161,3 +161,22 @@ get "/api/delete_collaborator/:assignment_id/:user_id" do
 
   json @assignment
 end
+
+# ------------------------------------------------------------------------------
+# Remove a link from an assignment
+# ------------------------------------------------------------------------------
+get "/api/delete_link/:assignment_id/:link_id" do
+  collaboration_to_delete = Collaborator.get_collaboration(params['assignment_id'], params['user_id'])
+
+  collaboration_to_delete.delete
+
+  selected_assignment = Assignment.find(params["assignment_id"])
+  @assignment = selected_assignment.to_hash
+
+  @assignment["collaborators"] = []
+  selected_assignment.get_user_names.each do |collaborator|
+    @assignment["collaborators"] << collaborator.to_hash
+  end
+
+  json @assignment
+end

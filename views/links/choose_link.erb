@@ -1,0 +1,25 @@
+<div>
+  <nav>
+    <p>
+      <a href="/all_assignments">View All Assignments</a>
+    </p>
+    <p>
+      <a href="/home">Home</a>
+    </p>
+  </nav>
+</div>
+
+<div>
+  <h2>Choose a link to delete:</h2>
+
+    <form action="/delete_link_from_assignment">
+      <select name="link[id]">
+          <% @assignment.get_links.each do |link| %>
+        <option value="<%= link.id %>"><%= link.name %></option>
+          <% end %>
+      </select>
+      <input type="hidden" name="link[assignment_id]" value="<%= @assignment.id %>">
+      <input type="submit">
+    </form>
+
+</div>
