@@ -114,5 +114,31 @@ get "/api/add_link_to_assignment/:name/:assignment_id/:description/:where_stored
 end
 
 # ------------------------------------------------------------------------------
-#
+# Add collaborator to an assignment
 # ------------------------------------------------------------------------------
+get "/api/add_collaborator/:assignment_id/:user_id" do
+  new_collaboration = Collaborator.new({"assignment_id" => params['assignment_id'], "user_id" => params['user_id']})
+
+  collaboration_added = new_collaboration.add_to_database
+
+  # Find the associated assignment and store all of its info
+  selected_assignment = Assignment.find(params["assignment_id"])
+  @assignment = selected_assignment.to_hash
+
+  @assignment["collaborators"] = []
+  selected_assignment.get_user_names.each do |collaborator|
+    @assignment["collaborators"] << collaborator.to_hash
+  end
+
+  @assignment["links"] = []
+  selected_assignment.get_links.each do |link|
+    @assignment["links"] << link.to_hash
+  end
+
+  # If new collaboration was actually added to the database, return JSON
+  if collaboration_added != false
+    json @assignment
+  else
+    erb "Addition failed."
+  end
+end
