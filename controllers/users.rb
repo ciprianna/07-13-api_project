@@ -10,7 +10,7 @@ end
 # ------------------------------------------------------------------------------
 # Step 1 - Display empty form to the user
 get "/add_user" do
-  erb :"collaborators/add_user"
+  erb :"users/add_user"
 end
 
 # Step 2 - Save form information

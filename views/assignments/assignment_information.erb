@@ -29,7 +29,7 @@
   <% end %>
 
   <h3>Collaborators:</h3>
-  <% @selected_assignment.get_user_names do |users| %>
+  <% @selected_assignment.get_user_names.each do |users| %>
   <ul>
     <li>
       <%= users["name"] %>

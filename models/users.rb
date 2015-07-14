@@ -53,6 +53,7 @@ class User
   #
   # Returns valid - true/false Boolean
   def valid?
+    valid = true
 
     if self.name.nil? || self.name == ""
       valid = false

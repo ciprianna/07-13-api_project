@@ -48,6 +48,7 @@ class Collaborator
   #
   # Returns valid - true/false Boolean
   def valid?
+    valid = true
 
     if self.assignment_id.nil? || self.assignment_id == ""
       valid = false
