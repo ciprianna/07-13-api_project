@@ -31,7 +31,7 @@ get "/api/collaborators" do
   json @collaborators
 end
 
-get "/api/collaborators/:id"
+get "/api/collaborators/:id" do
   selected_user = User.find(params["id"])
   @users = selected_user.to_hash
 
@@ -41,4 +41,13 @@ get "/api/collaborators/:id"
   end
 
   json @users
+end
+
+# ------------------------------------------------------------------------------
+# Create new assignment
+# ------------------------------------------------------------------------------
+# Step 1 - Form to display to the user
+get "/api/create_assignment" do
+  @add_from_api = true
+  erb :"assignments/add_assignment"
 end

@@ -1,7 +1,7 @@
 <div>
   <nav>
     <p>
-      <a href="/all_assignment">View All Assignments</a>
+      <a href="/all_assignments">View All Assignments</a>
     </p>
     <p>
       <a href="/edit_assignment">Edit Assignment Information</a>
@@ -18,7 +18,7 @@
   <% end %>
 </div>
 
-<div>
+<div id="add_new_assignment_form">
   <h2>Add a new assignment</h2>
   <form action="/save_new_assignment">
     <h3>Name</h3>
@@ -27,6 +27,14 @@
     <input type="text" name="assignments[description]" placeholder="Assignment Description">
     <h3>Link to Assignment</h3>
     <input type="text" name="assignments[where_stored]" placeholder="Link to Assignment"><br>
-    <input type="submit">
+    <% if  @add_from_api %>
+      <input type="submit" id="use_api">
+    <% else %>
+      <input type="submit">
+    <% end %>
   </form>
+</div>
+
+<div id="success">
+  
 </div>

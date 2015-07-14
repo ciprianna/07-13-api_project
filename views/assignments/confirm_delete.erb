@@ -3,8 +3,8 @@
 </p>
 
 <form action="/really_delete">
-  <input type="radio" name="assignments[confirm_delete]" value="Yes">Yes<br>
-  <input type="radio" name="assignments[confirm_delete]" value="No">No
-  <input type="hidden" name="assignments[id]" value="params['id']"><br>
+  <input type="radio" name="assignments[confirm_delete]" value="yes">Yes<br>
+  <input type="radio" name="assignments[confirm_delete]" value="no">No
+  <input type="hidden" name="assignments[id]" value="<%= params['id'] %>"><br>
   <input type="submit">
 </form>

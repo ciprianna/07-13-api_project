@@ -79,7 +79,7 @@ end
 # Step 3 - Delete
 get "/really_delete" do
   if params["assignments"]["confirm_delete"] == "yes"
-    assignment_to_delete = Assignment.find(params["assignments"]["id"])
+    assignment_to_delete = Assignment.find(params["assignments"]["id"].to_i)
     assignment_to_delete.delete
     erb :"assignments/delete_success"
   else
