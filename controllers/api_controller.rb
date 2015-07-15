@@ -61,11 +61,13 @@ end
 # ------------------------------------------------------------------------------
 # Create new assignment
 # ------------------------------------------------------------------------------
-# get "/api/create_assignment" do
-#   @add_from_api = true
-#   erb :"assignments/add_assignment"
-# end
+# Step 1 - Display same form as regular website to user
+get "/api/create_assignment" do
+  @add_from_api = true
+  erb :"assignments/add_assignment"
+end
 
+# Step 2 - Create the assignment and return results in JSON
 get "/api/create_assignment/:name/:description/:where_stored" do
   new_assignment = Assignment.new({"name" => params['name'], "description" => params['description'], "where_stored" => params['where_stored']})
 
@@ -197,4 +199,11 @@ end
 # ------------------------------------------------------------------------------
 get "/api/all_assignments" do
   erb :"api/all_assignments"
+end
+
+# ------------------------------------------------------------------------------
+# Display all links
+# ------------------------------------------------------------------------------
+get "/api/all_links" do
+  erb :"api/all_links"
 end
