@@ -30,16 +30,37 @@ function display_assignment_info(event){
     parent.appendChild(sub_list);
     var info = assignment_request.response;
     var assignment_info = JSON.parse(info);
+
+
     var description_element = document.createElement("li");
     sub_list.appendChild(description_element);
     description_element.appendChild(document.createTextNode("Description: " + assignment_info.description))
+
+
     var where_stored_element = document.createElement("li");
     sub_list.appendChild(where_stored_element);
     where_stored_element.appendChild(document.createTextNode("Github Link: " + assignment_info.where_stored))
+
+
     var collaborators_element = document.createElement("li");
     sub_list.appendChild(collaborators_element);
+    var collabs = assignment_info.collaborators;
+    var collab_string = "";
+    for (var i = 0; i < collabs.length; i++) {
+      collab_string += collabs[i].name + " ";
+    }
+    collaborators_element.appendChild(document.createTextNode("Collaborators: " + collab_string))
 
-      // collaborators_element.appendChild(document.createTextNode("Collaborators: " + assignment_info[i].collaborators["name"]))
+    var links_element = document.createElement("li");
+    sub_list.appendChild(links_element);
+    var assign_links = assignment_info.links;
+    links_element.appendChild(document.createTextNode("Media: "))
+    for (var i = 0; i < assign_links.length; i++) {
+      var media_link = document.createElement('a');
+      links_element.appendChild(media_link);
+      media_link.appendChild(document.createTextNode(assign_links[i].name));
+      media_link.setAttribute('href', assign_links[i].where_stored)
+    }
   });
 
   event.preventDefault();
