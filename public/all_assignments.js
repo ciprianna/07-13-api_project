@@ -58,7 +58,7 @@ function display_assignment_info(event){
     for (var i = 0; i < assign_links.length; i++) {
       var media_link = document.createElement('a');
       links_element.appendChild(media_link);
-      media_link.appendChild(document.createTextNode(assign_links[i].name));
+      media_link.appendChild(document.createTextNode(assign_links[i].name + " \t"));
       media_link.setAttribute('href', assign_links[i].where_stored)
     }
   });
