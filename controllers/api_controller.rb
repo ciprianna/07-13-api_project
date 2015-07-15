@@ -191,3 +191,10 @@ get "/api/delete_assignment/:assignment_id" do
   @assignments = Assignment.all_hash
   json @assignments
 end
+
+# ------------------------------------------------------------------------------
+# Display all assignments
+# ------------------------------------------------------------------------------
+get "/api/all_assignments" do
+  erb :"api/all_assignments"
+end
