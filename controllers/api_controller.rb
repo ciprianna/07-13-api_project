@@ -207,3 +207,10 @@ end
 get "/api/all_links" do
   erb :"api/all_links"
 end
+
+# ------------------------------------------------------------------------------
+# Display all collaborators
+# ------------------------------------------------------------------------------
+get "/api/all_collaborators" do
+  erb :"api/all_collaborators"
+end
